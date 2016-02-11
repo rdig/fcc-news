@@ -10,6 +10,64 @@
 	<link href="styles/boilerplate.css" rel="stylesheet" />
 </head>
 <body>
+	<nav>
+		<div class="brand">
+			<span class="icon fcc"></span>
+			<h1 class="name">Camper News</h1>
+		</div>
+		<ul class="links">
+			<li><a class="active" id="">Hot</a></li>
+		</ul>
+	</nav>
+	<div class="loader">
+		<span>Loading articles</span>
+		<span class="icon loading"></span>
+	</div>
+	<p class="warning">API could not be reached. Data was not loaded. Sorry :(</p>
+	<div class="articles">
+		<h2>Today</h2>
+		<div id="today">
+			<div class="article">
+				<div class="upvotes">
+					<span>10</span>
+				</div>
+				<div class="article-wrapper">
+					<h3>Product thinking is the next big thing in UX Design</h3>
+					<p>
+						<span class="avatar"></span>
+						<a href="" class="op">Nikkel Blaase</a>
+					</p>
+				</div>
+			</div>
+			<div class="article">
+				<div class="upvotes">
+					<span>10</span>
+				</div>
+				<div class="article-wrapper">
+					<h3>A very very veryyyyy long lorem ipsum text a very very veryyyyy long lorem ipsum text a very very veryyyyy long lorem ipsum text a very very veryyyyy long lorem ipsum text</h3>
+					<p>
+						<span class="avatar"></span>
+						<a href="" class="op">Nikkel Blaase</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<h2>Older</h2>
+		<div id="older">
+			<div class="article">
+				<div class="upvotes">
+					<span>10</span>
+				</div>
+				<div class="article-wrapper">
+					<h3>Product thinking is the next big thing in UX Design</h3>
+					<p>
+						<span class="avatar"></span>
+						<a href="" class="op">Nikkel Blaase</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<footer>
 		<p>&copy; 2016 <a href="http://glogovetan.com" class="brand" target="_blank">Raul Glogovetan</a>. Project built for a <a href="http://www.freecodecamp.com/challenges/stylize-stories-on-camper-news" target="_blank">FreeCodeCamp</a> challenge.</p>
 		<a class="github" href="https://github.com/rdig/fcc-news" title="Raul Glogovetan's Public Repository" target="_blank"><span class="icon"></span></a>

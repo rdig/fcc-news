@@ -4,12 +4,29 @@
 
 $default-text-color: #111111;
 $footer-link-color: #27ae60;
+$default-background: #EBE6E6;
+$nav-background: #33333C;
+$nav-text: #FFFFFF;
+$nav-link-hover-background: #44444f;
+$date-headings-text: #5A5B5B;
+$article-background: #FFFFFF;
+$upvote-text: #958e8e;
+$op-text: #13A9C8;
+$article-title-text: #222222;
+$avatar-default-background: #eeeeee;
+$menu-link-active-border: #FF6347;
+$warning-background: #c84e38;
+$warning-color: #FFFFFF;
+$footer-text: #958e8e;
+$loading-text: #95a5a6;
 
 $sprite-map: '';
 $sprite-map-alt: '';
-
 $github-icon: '../media/icons/rg-fcc-icon-github_v1.svg';
 $github-icon-alt: '../media/icons/rg-fcc-icon-github_v1.png';
+$fcc-logo: '../media/icons/rg-fcc-logo_v1.svg';
+$fcc-logo-alt: '../media/icons/rg-fcc-logo_v1.png';
+$spinner: '../media/animated/preloader.gif';
 
 $github-icon-light: 0px 0px;
 $github-icon-dark: -57px 0px;
@@ -63,23 +80,23 @@ $github-icon-dark: -57px 0px;
 	user-select: text;
 }
 @mixin fcc-footer {
-	top: auto;
-	bottom: 0;
-	padding: 10px 10px 10px 10px;
+	color: $footer-text;
+	padding: 10px 20px 20px 20px;
+	margin: 20px 0 0 0px;
 	text-align: center;
 	font-size: 11px;
-	position: fixed;
-	z-index: 1;
-	display: block;
+	line-height: 18px;
 	width: 100%;
 	a {
 		color: $footer-link-color;
 		text-decoration: none;
+		&:hover { text-decoration: underline; }
 	}
 	.brand {
-		color: $default-text-color;
+		color: $footer-text;
 		text-decoration: underline;
 		font-weight: bold;
+		&:hover { color: $default-text-color; }
 	}
 	p {
 		margin: 0 0 4px 0px;
@@ -96,25 +113,43 @@ $github-icon-dark: -57px 0px;
 			width: 26px;
 			background: url($github-icon-alt);
 			background-image: url($github-icon), none;
-			background-position: $github-icon-dark;
-
+			background-position: $github-icon-light;
+			background-repeat: no-repeat;
+			&:hover { background-position: $github-icon-dark; }
 		}
 		&:focus {
 			outline: 0;
 		}
 	}
-	@media (min-width: 800px) {
-		padding: 10px 10px 20px 10px;
-	}
+
+}
+@mixin default_transition($transition-type) {
+	-webkit-ransition: $transition-type .2s ease-in-out;
+	-moz-transition: $transition-type .2s ease-in-out;
+	-ms-transition: $transition-type .2s ease-in-out;
+	transition: $transition-type .2s ease-in-out;
+}
+@mixin border_radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
 }
 
-* { box-sizing: border-box; }
-html {}
+* {
+	box-sizing: border-box;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+html {
+	background-color: $default-background;
+}
 body {
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 	color: $default-text-color;
 	font-family: 'Lato', sans-serif;
+	font-size: 14px;
 }
 footer { @include fcc-footer; }
 .boiler {
@@ -123,5 +158,168 @@ footer { @include fcc-footer; }
 	p {
 		text-align: center;
 		font-style: italic;
+	}
+}
+.icon {
+	vertical-align: top;
+	margin: 0px 0 0 0;
+	display:inline-block;
+	height: 16px;
+	width: 16px;
+	&.fcc {
+		height: 18px;
+		width: 30px;
+		background: url($fcc-logo-alt);
+		background-image: url($fcc-logo), none;
+		background-repeat: no-repeat;
+		margin: 6px 0 0 0;
+	}
+	&.loading {
+		height: 32px;
+		width: 32px;
+		background-image: url($spinner), none;
+		background-repeat: no-repeat;
+		display: block;
+		margin: 0 auto 0 auto;
+	}
+}
+nav {
+	background-color: $nav-background;
+	color: $nav-text;
+	height: 60px;
+	.brand {
+		display: inline-block;
+		float: left;
+		padding: 14px 0 0 0;
+		margin: 0 0px 0 20px;
+		@media (min-width: 600px) { margin: 0 30px 0 30px; }
+	}
+	.name {
+		margin: 0 0 0 8px;
+		font-size: 22px;
+		font-weight: 400;
+		display: none;
+		@media (min-width: 600px) { display: inline-block; }
+	}
+	.links {
+		float: right;
+		display: inline-block;
+		list-style-type: none;
+		margin: 0 10px 0 10px;
+		@media (min-width: 600px) { margin: 0 30px 0 30px; }
+		li { display: inline-block; }
+		a {
+			display: block;
+			text-transform: uppercase;
+			font-weight: 700;
+			font-size: 13px;
+			text-decoration: none;
+			line-height: 56px;
+			cursor: pointer;
+			@include default_transition(background-color);
+			padding: 0 10px 0 10px;
+			&:hover {
+				text-decoration: none;
+				background-color: $nav-link-hover-background;
+			}
+			&:active { background: transparent; }
+			&.active { border-bottom: 4px solid $menu-link-active-border; }
+		}
+	}
+}
+h2 {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	font-size: 12px;
+	text-transform: uppercase;
+	color: $date-headings-text;
+	margin: 14px 20px 0px 20px;
+	@media (min-width: 600px) { margin: 14px 40px 0px 40px; }
+}
+.articles {
+	display: none;
+}
+.article-wrapper {
+	margin: 0 0 0 30px;
+}
+.upvotes {
+	float: left;
+	span {
+		font-weight: 700;
+		font-size: 12px;
+		vertical-align: top;
+		margin: 2px 0 0 0;
+		display:inline-block;
+		color: $upvote-text;
+	}
+}
+.article {
+	background-color: $article-background;
+	margin: 14px 10px 0 10px;
+	padding: 25px 25px 25px 20px;
+	@include border_radius(1px);
+	@media (min-width: 600px) {
+		margin: 14px 30px 0 30px;
+		padding: 20px 40px 20px 30px;
+	}
+	h3 {
+		padding: 0 0 0 0;
+		margin: 0 0 0 0;
+		font-size: 16px;
+		line-height: 18px;
+		font-weight: 700;
+		color: $article-title-text;
+	}
+	p {
+		margin: 10px 0 0 0;
+		padding: 0 0 0 0;
+		@media (min-width: 600px) { margin: 8px 0 0 0; }
+	}
+	.avatar {
+		height: 24px;
+		width: 24px;
+		background-color: $avatar-default-background;
+		display: inline-block;
+		vertical-align: top;
+		@include border_radius(24px);
+	}
+	.op {
+		display: inline-block;
+		margin: 3px 0 0 4px;
+		text-decoration: none;
+		color: $op-text;
+		&:hover { text-decoration: underline; }
+	}
+}
+.warning {
+	display: none;
+	background-color: $warning-background;
+	color: #FFFFFF;
+	text-align: center;
+	margin: 14px 10px 0 10px;
+	padding: 25px 20px 25px 20px;
+	@include border_radius(1px);
+	font-size: 13px;
+	@media (min-width: 600px) {
+		margin: 14px 30px 0 30px;
+		padding: 20px 30px 20px 30px;
+	}
+}
+.loader {
+	background-color: $article-background;
+	margin: 14px 10px 0 10px;
+	padding: 25px 25px 25px 20px;
+	@include border_radius(1px);
+	text-align: center;
+	@media (min-width: 600px) {
+		margin: 14px 30px 0 30px;
+		padding: 20px 40px 20px 30px;
+	}
+	span {
+		color: $loading-text;
+		font-size: 16px;
+		display: inline-block;
+		margin: 0 0 20px 0;
+		@media (min-width: 600px) { margin: 0 0 10px 0; }
 	}
 }
