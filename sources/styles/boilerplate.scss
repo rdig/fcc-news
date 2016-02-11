@@ -209,6 +209,7 @@ nav {
 		@media (min-width: 600px) { margin: 0 30px 0 30px; }
 		li { display: inline-block; }
 		a {
+			color: $nav-text;
 			display: block;
 			text-transform: uppercase;
 			font-weight: 700;
@@ -269,6 +270,11 @@ h2 {
 		line-height: 18px;
 		font-weight: 700;
 		color: $article-title-text;
+		a {
+			color: $article-title-text;
+			text-decoration: none;
+			&:hover { text-decoration: none; }
+		}
 	}
 	p {
 		margin: 10px 0 0 0;
@@ -282,10 +288,12 @@ h2 {
 		display: inline-block;
 		vertical-align: top;
 		@include border_radius(24px);
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
 	.op {
 		display: inline-block;
-		margin: 3px 0 0 4px;
+		margin: 2px 0 0 6px;
 		text-decoration: none;
 		color: $op-text;
 		&:hover { text-decoration: underline; }
